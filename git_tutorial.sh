@@ -155,28 +155,29 @@ while true; do
 done
 echo
 
-# Lesson 8: git clone
-info "Lesson 8: Clone a repository"
+# Lesson 8: git clone (simulated)
+info "Lesson 8: Clone a repository (simulated)"
 
 echo "👉 Normally, you would run:"
-echo "   git clone https://github.com/AbdulAhad390/check.git"
+echo "   git clone https://github.com/username/repo.git"
 echo
 
-CLONE_DIR="cloned_repo"
-
-if [ -d "$CLONE_DIR/.git" ]; then
-    success "Repository already cloned at $CLONE_DIR"
-else
-    git clone https://github.com/AbdulAhad390/check.git "$CLONE_DIR" >/dev/null 2>&1
-fi
-
-if [ -d "$CLONE_DIR/.git" ]; then
-    success "Repository successfully cloned into '$CLONE_DIR'"
-    echo "📂 Contents of cloned repository:"
-    ls -1 "$CLONE_DIR"
-else
-    error "Failed to clone repository. Check your internet or repo URL."
-fi
+while true; do
+    read -p "Run: git clone https://github.com/username/repo.git : " cmd
+    if [[ "$cmd" =~ git\ clone ]]; then
+        success "✅ (Simulated) Repository would be cloned into a new folder."
+        echo "ℹ️  In real life, this makes a local copy of a remote repository."
+        echo "📂 Example structure of a cloned repo:"
+        echo "   cloned_repo/"
+        echo "     ├── README.md"
+        echo "     ├── .gitignore"
+        echo "     └── main.py"
+        break
+    else
+        error "Please type: git clone <URL>"
+        sleep 1
+    fi
+done
 echo
 
 
