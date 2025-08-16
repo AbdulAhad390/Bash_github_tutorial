@@ -94,12 +94,12 @@ echo
 # Lesson 5: git remote add origin <URL>
 info "Lesson 5: Add remote origin"
 while true; do
-    read -p "Run: git remote add origin https://github.com/AbdulAhad390/check.git : " cmd
-    if [ "$cmd" = "git remote add origin https://github.com/AbdulAhad390/check.git" ]; then
+    read -p "Run: git remote add origin https://github.com/Abc/check.git : " cmd
+    if [ "$cmd" = "git remote add origin https://github.com/Abc/check.git" ]; then
         eval "$cmd"
     fi
     remote=$(git remote get-url origin 2>/dev/null)
-    if [ "$remote" = "https://github.com/AbdulAhad390/check.git" ]; then
+    if [ "$remote" = "https://github.com/Abc/check.git" ]; then
         success "Remote origin set!"
         break
     else
@@ -163,7 +163,7 @@ echo
 # Lesson 8: git clone
 info "Lesson 8: Clone a repository"
 echo "Open a new directory and run:"
-echo "  git clone https://github.com/AbdulAhad390/check.git"
+echo "  git clone https://github.com/Abc/check.git"
 while true; do
     read -p "Type the path where you cloned it (or press ENTER when done): " clone_path
     if [ -d "$clone_path/.git" ]; then
