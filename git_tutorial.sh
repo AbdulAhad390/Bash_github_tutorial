@@ -127,6 +127,42 @@ while true; do
 done
 echo
 
+# Lesson 7: Merge feature branch into main
+info "Lesson 7: Merge a feature branch into main"
+echo "Steps:"
+echo "  1. Create and switch to a branch: git checkout -b feature"
+echo "  2. Make some changes and commit them"
+echo "  3. Switch back to main: git checkout main"
+echo "  4. Run: git merge feature"
+while true; do
+    branch=$(git branch --show-current 2>/dev/null)
+    merged=$(git log --oneline | grep "feature" || true)
+    if [ "$branch" = "main" ] && [ -n "$merged" ]; then
+        success "Feature branch merged into main!"
+        break
+    else
+        error "Not merged yet. Follow the steps above."
+        sleep 3
+    fi
+done
 echo
-echo "${GREEN}🎉 Congratulations! You completed the GitHub workflow tutorial!${RESET}"
-echo "Now you know: init, add, commit, branch, remote, and push."
+
+# Lesson 8: git clone
+info "Lesson 8: Clone a repository"
+echo "Open a new directory and run:"
+echo "  git clone https://github.com/AbdulAhad390/check.git"
+while true; do
+    read -p "Type the path where you cloned it (or press ENTER when done): " clone_path
+    if [ -d "$clone_path/.git" ]; then
+        success "Repository cloned successfully at $clone_path"
+        break
+    else
+        error "Could not find a Git repo at that path."
+        sleep 2
+    fi
+done
+echo
+
+echo
+echo "${GREEN}🎉 Congratulations! You completed the extended GitHub workflow tutorial!${RESET}"
+echo "Now you know: init, add, commit, branch, remote, push, merge, and clone."
