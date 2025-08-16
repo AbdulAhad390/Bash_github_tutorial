@@ -129,20 +129,33 @@ echo
 
 # Lesson 7: Merge feature branch into main
 info "Lesson 7: Merge a feature branch into main"
-echo "Steps:"
-echo "  1. Create and switch to a branch: git checkout -b feature"
-echo "  2. Make some changes and commit them"
-echo "  3. Switch back to main: git checkout main"
-echo "  4. Run: git merge feature"
+
+echo "👉 First, let's create a feature branch and add a dummy file."
+git checkout -b feature >/dev/null 2>&1
+echo "This is a feature file" > feature.txt
+git add feature.txt
+git commit -m "add feature file" >/dev/null 2>&1
+git checkout main >/dev/null 2>&1
+
+echo "✅ A branch 'feature' with a commit has been created for you."
+
+echo
+echo "Now your task: merge it into main."
+echo "Run: git merge feature"
+
 while true; do
-    branch=$(git branch --show-current 2>/dev/null)
-    merged=$(git log --oneline | grep "feature" || true)
-    if [ "$branch" = "main" ] && [ -n "$merged" ]; then
-        success "Feature branch merged into main!"
+    read -p "Run: git merge feature : " merge_cmd
+    if [ "$merge_cmd" = "git merge feature" ]; then
+        eval "$merge_cmd"
+    fi
+
+    merged=$(git log --oneline | grep "add feature file" || true)
+    if [ -n "$merged" ]; then
+        success "Feature branch successfully merged into main!"
         break
     else
-        error "Not merged yet. Follow the steps above."
-        sleep 3
+        error "Not merged yet. Run: git merge feature"
+        sleep 2
     fi
 done
 echo
