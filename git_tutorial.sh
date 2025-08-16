@@ -92,40 +92,35 @@ done
 echo
 
 # Lesson 5: git remote add origin <URL>
-info "Lesson 5: Add remote origin"
+info "Lesson 5: Add remote origin (simulated)"
 while true; do
-    read -p "Run: git remote add origin https://github.com/Abc/check.git : " cmd
-    if [ "$cmd" = "git remote add origin https://github.com/Abc/check.git" ]; then
-        eval "$cmd"
-    fi
-    remote=$(git remote get-url origin 2>/dev/null)
-    if [ "$remote" = "https://github.com/Abc/check.git" ]; then
-        success "Remote origin set!"
+    read -p "Run: git remote add origin https://github.com/username/repo.git : " cmd
+    if [[ "$cmd" =~ git\ remote\ add\ origin ]]; then
+        success "✅ (Simulated) Remote 'origin' would be added."
+        echo "ℹ️ In real life, this links your local repo with GitHub."
         break
     else
-        error "Remote origin not added yet."
+        error "Please type: git remote add origin <URL>"
         sleep 1
     fi
 done
 echo
 
 # Lesson 6: git push -u origin main
-info "Lesson 6: Push to GitHub"
+info "Lesson 6: Push to GitHub (simulated)"
 while true; do
     read -p "Run: git push -u origin main : " cmd
     if [ "$cmd" = "git push -u origin main" ]; then
-        eval "$cmd"
-    fi
-    pushed=$(git log origin/main..main 2>/dev/null)
-    if [ -z "$pushed" ]; then
-        success "Code pushed to GitHub!"
+        success "✅ (Simulated) Code would be pushed to GitHub."
+        echo "ℹ️  In real life, this uploads your commits to the remote repo."
         break
     else
-        error "Push not completed yet."
+        error "Please type: git push -u origin main"
         sleep 1
     fi
 done
 echo
+
 
 # Lesson 7: Merge feature branch into main
 info "Lesson 7: Merge a feature branch into main"
@@ -162,19 +157,28 @@ echo
 
 # Lesson 8: git clone
 info "Lesson 8: Clone a repository"
-echo "Open a new directory and run:"
-echo "  git clone https://github.com/Abc/check.git"
-while true; do
-    read -p "Type the path where you cloned it (or press ENTER when done): " clone_path
-    if [ -d "$clone_path/.git" ]; then
-        success "Repository cloned successfully at $clone_path"
-        break
-    else
-        error "Could not find a Git repo at that path."
-        sleep 2
-    fi
-done
+
+echo "👉 Normally, you would run:"
+echo "   git clone https://github.com/AbdulAhad390/check.git"
 echo
+
+CLONE_DIR="cloned_repo"
+
+if [ -d "$CLONE_DIR/.git" ]; then
+    success "Repository already cloned at $CLONE_DIR"
+else
+    git clone https://github.com/AbdulAhad390/check.git "$CLONE_DIR" >/dev/null 2>&1
+fi
+
+if [ -d "$CLONE_DIR/.git" ]; then
+    success "Repository successfully cloned into '$CLONE_DIR'"
+    echo "📂 Contents of cloned repository:"
+    ls -1 "$CLONE_DIR"
+else
+    error "Failed to clone repository. Check your internet or repo URL."
+fi
+echo
+
 
 echo
 echo "${GREEN}🎉 Congratulations! You completed the extended GitHub workflow tutorial!${RESET}"
