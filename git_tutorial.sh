@@ -114,19 +114,16 @@ echo "This command renames the current branch to 'main'."
 echo
 while true; do
     read -p "Run: git branch -M main : " cmd
-
-    # If user typed a known equivalent command, run it; if empty, assume they ran command elsewhere
     if [ -n "$cmd" ]; then
         if [[ "$cmd" =~ ^(git\ branch\ -M\ main|git\ checkout\ -b\ main|git\ switch\ -c\ main|git\ checkout\ main|git\ switch\ main)$ ]]; then
             eval "$cmd"
         else
-            error "Please type: git branch -M main (or an equivalent) or press ENTER after running it elsewhere."
+            error "Please type: git branch -M main ."
             sleep 1
             continue
         fi
     fi
 
-    # Trim possible CR characters (Windows) and check current branch
     branch=$(git branch --show-current 2>/dev/null | tr -d '\r')
     if [ "$branch" = "main" ]; then
         success "Branch renamed to main!"
@@ -138,7 +135,7 @@ while true; do
 done
 echo
 
-# Lesson 5: git remote add origin <URL> (simulated)
+# Lesson 5: git remote add origin 
 info "Lesson 5: Add remote origin (simulated)"
 echo " A remote is a link to a repository hosted online (like GitHub)."
 echo "By adding 'origin', you connect your local project to the GitHub repo URL."
@@ -157,7 +154,7 @@ while true; do
 done
 echo
 
-# Lesson 6: git push -u origin main (simulated)
+# Lesson 6: git push -u origin main 
 info "Lesson 6: Push to GitHub (simulated)"
 echo " 'git push' uploads your local commits to GitHub."
 echo "The '-u origin main' part tells Git to push the 'main' branch to 'origin' (your remote)."
@@ -206,7 +203,7 @@ while true; do
 done
 echo
 
-# Lesson 8: git clone (simulated)
+# Lesson 8: git clone 
 info "Lesson 8: Clone a repository (simulated)"
 echo " 'git clone' copies a remote repo from GitHub to your computer."
 echo "This gives you a local working copy of someone else’s code."
