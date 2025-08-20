@@ -23,7 +23,7 @@ echo "You will learn Git step-by-step. Each lesson explains a concept,"
 echo "then you practice by typing the correct command."
 echo
 
-# Lesson 1: git init
+# ...existing code...
 info "Lesson 1: Initialize a Git repository"
 echo "📖 Description: 'git init' creates a new Git repository in the current folder."
 echo "It sets up a hidden '.git' directory where Git stores all version history."
@@ -31,19 +31,26 @@ echo "This is the very first step in starting version control for any project."
 echo
 while true; do
     read -p "Run: git init : " cmd
+
+   # If user typed the exact command, execute and verify
     if [ "$cmd" = "git init" ]; then
         eval "$cmd"
+        if [ -d ".git" ]; then
+            success "Repository initialized!"
+            break
+        else
+            error "Failed to initialize repository. Try again."
+            sleep 1
+            continue
+        fi
     fi
-    if [ -d ".git" ]; then
-        success "Repository initialized!"
-        break
-    else
-        error "Repo not found yet."
-        sleep 1
-    fi
+
+    error "Please type exactly: git init"
+    sleep 1
 done
 echo
 
+# ...existing code...
 # Lesson 2: git add .
 info "Lesson 2: Stage your files"
 echo "📖 Description: 'git add .' stages all the changes in your project."
@@ -54,17 +61,21 @@ while true; do
     read -p "Run: git add . : " cmd
     if [ "$cmd" = "git add ." ]; then
         eval "$cmd"
+    else
+        error "Please type exactly: git add . "
+        sleep 1
+        continue
     fi
+
     staged=$(git diff --cached --name-only)
     if [ -n "$staged" ]; then
         success "Files staged successfully!"
         break
     else
-        error "No files staged yet."
+        error "No files staged yet. Make sure you added files or staged changes."
         sleep 1
     fi
-done
-echo
+    done
 
 # Lesson 3: git commit -m "first commit"
 info "Lesson 3: Make your first commit"
