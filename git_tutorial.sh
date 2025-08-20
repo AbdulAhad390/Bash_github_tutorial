@@ -23,7 +23,7 @@ echo "You will learn Git step-by-step. Each lesson explains a concept,"
 echo "then you practice by typing the correct command."
 echo
 
-# ...existing code...
+
 info "Lesson 1: Initialize a Git repository"
 echo " 'git init' creates a new Git repository in the current folder."
 echo "It sets up a hidden '.git' directory where Git stores all version history."
@@ -50,7 +50,7 @@ while true; do
 done
 echo
 
-# ...existing code...
+
 # Lesson 2: git add .
 info "Lesson 2: Stage your files"
 echo " 'git add .' stages all the changes in your project."
@@ -77,7 +77,7 @@ while true; do
     fi
     done
 
-# ...existing code...
+
 # Lesson 3: git commit -m "first commit"
 info "Lesson 3: Make your first commit"
 echo " 'git commit' permanently saves your staged changes."
@@ -90,7 +90,7 @@ while true; do
     if [ "$cmd" = "git commit -m \"first commit\"" ]; then
         eval "$cmd"
     else
-        error "Please type exactly: git commit -m \"first commit\" (or press ENTER after running it elsewhere)"
+        error "Please type exactly: git commit -m \"first commit\" "
         sleep 1
         continue
     fi
