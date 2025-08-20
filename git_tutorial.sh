@@ -44,24 +44,6 @@ while true; do
 done
 echo
 
-# Lesson 1.5: git status (before add)
-info "Lesson 1.5: Check repo status (before staging)"
-echo "📖 Description: 'git status' shows the state of your working directory."
-echo "Right after 'git init', your files will appear as 'untracked'."
-echo
-while true; do
-    read -p "Run: git status : " cmd
-    if [ "$cmd" = "git status" ]; then
-        eval "$cmd"
-        success "You saw the status! Files are untracked at this stage."
-        break
-    else
-        error "Please type: git status"
-        sleep 1
-    fi
-done
-echo
-
 # Lesson 2: git add .
 info "Lesson 2: Stage your files"
 echo "📖 Description: 'git add .' stages all the changes in your project."
@@ -84,24 +66,6 @@ while true; do
 done
 echo
 
-# Lesson 2.5: git status (after add, before commit)
-info "Lesson 2.5: Check repo status (after staging)"
-echo "📖 Description: After running 'git add .', files are staged for commit."
-echo "Now 'git status' will list them under 'Changes to be committed'."
-echo
-while true; do
-    read -p "Run: git status : " cmd
-    if [ "$cmd" = "git status" ]; then
-        eval "$cmd"
-        success "You saw the status! Files are staged and ready to commit."
-        break
-    else
-        error "Please type: git status"
-        sleep 1
-    fi
-done
-echo
-
 # Lesson 3: git commit -m "first commit"
 info "Lesson 3: Make your first commit"
 echo "📖 Description: 'git commit' permanently saves your staged changes."
@@ -119,24 +83,6 @@ while true; do
         break
     else
         error "No commit detected yet."
-        sleep 1
-    fi
-done
-echo
-
-# Lesson 3.5: git status (after commit)
-info "Lesson 3.5: Check repo status (after commit)"
-echo "📖 Description: After committing, your working directory is clean."
-echo "This means there are no pending changes — everything is saved in history."
-echo
-while true; do
-    read -p "Run: git status : " cmd
-    if [ "$cmd" = "git status" ]; then
-        eval "$cmd"
-        success "You saw the status! Working tree is clean now."
-        break
-    else
-        error "Please type: git status"
         sleep 1
     fi
 done
@@ -247,7 +193,7 @@ while true; do
         echo "   cloned_repo/"
         echo "     ├── README.md"
         echo "     ├── .gitignore"
-        echo "     └── main.py"
+        echo "     └── git_tutorial.py"
         break
     else
         error "Please type: git clone <URL>"
@@ -258,6 +204,4 @@ echo
 
 echo
 echo "${GREEN}🎉 Congratulations! You completed the full GitHub workflow tutorial!${RESET}"
-echo "Now you know: init, status, add, commit, branch, remote, push, merge, and clone."
-echo "You can now work on your own projects on GitHub!"
-echo
+echo "Now you know: init, add, commit, branch, remote, push, merge, and clone."
