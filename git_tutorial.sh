@@ -135,24 +135,25 @@ while true; do
 done
 echo
 
+
 # Lesson 5: git remote add origin 
-info "Lesson 5: Add remote origin (simulated)"
+info "Lesson 5: Add remote origin "
 echo " A remote is a link to a repository hosted online (like GitHub)."
 echo "By adding 'origin', you connect your local project to the GitHub repo URL."
 echo "This allows you to push and pull changes between your machine and GitHub."
 echo
 while true; do
     read -p "Run: git remote add origin https://github.com/username/repo.git : " cmd
-    if [[ "$cmd" =~ git\ remote\ add\ origin \https://github.com/username/repo.git ]]; then
+
+    if [[ "$cmd" == git\ remote\ add\ origin* ]]; then
         success "✅ (Simulated) Remote 'origin' would be added."
         echo "ℹ️  In real life, this links your local repo with GitHub."
         break
     else
-        error "Please type: git remote add origin <URL>"
+        error "Please type: git remote add origin <URL> (or press ENTER if you ran it elsewhere)."
         sleep 1
     fi
 done
-echo
 
 # Lesson 6: git push -u origin main 
 info "Lesson 6: Push to GitHub (simulated)"
