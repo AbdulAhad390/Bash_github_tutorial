@@ -114,10 +114,20 @@ echo "This command renames the current branch to 'main'."
 echo
 while true; do
     read -p "Run: git branch -M main : " cmd
-    if [ "$cmd" = "git branch -M main" ]; then
-        eval "$cmd"
+
+    # If user typed a known equivalent command, run it; if empty, assume they ran command elsewhere
+    if [ -n "$cmd" ]; then
+        if [[ "$cmd" =~ ^(git\ branch\ -M\ main|git\ checkout\ -b\ main|git\ switch\ -c\ main|git\ checkout\ main|git\ switch\ main)$ ]]; then
+            eval "$cmd"
+        else
+            error "Please type: git branch -M main (or an equivalent) or press ENTER after running it elsewhere."
+            sleep 1
+            continue
+        fi
     fi
-    branch=$(git branch --show-current 2>/dev/null)
+
+    # Trim possible CR characters (Windows) and check current branch
+    branch=$(git branch --show-current 2>/dev/null | tr -d '\r')
     if [ "$branch" = "main" ]; then
         success "Branch renamed to main!"
         break
