@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 🎯 GitHub Workflow Tutorial Generator (Safe Learning Mode)
+# GitHub Workflow Tutorial Generator 
 
 # --- Colors ---
 GREEN=$(tput setaf 2)
@@ -25,7 +25,7 @@ echo
 
 # ...existing code...
 info "Lesson 1: Initialize a Git repository"
-echo "📖 Description: 'git init' creates a new Git repository in the current folder."
+echo " 'git init' creates a new Git repository in the current folder."
 echo "It sets up a hidden '.git' directory where Git stores all version history."
 echo "This is the very first step in starting version control for any project."
 echo
@@ -53,7 +53,7 @@ echo
 # ...existing code...
 # Lesson 2: git add .
 info "Lesson 2: Stage your files"
-echo "📖 Description: 'git add .' stages all the changes in your project."
+echo " 'git add .' stages all the changes in your project."
 echo "Staging means preparing files to be part of the next commit."
 echo "Think of it like a shopping cart — you add items before checkout."
 echo
@@ -79,7 +79,7 @@ while true; do
 
 # Lesson 3: git commit -m "first commit"
 info "Lesson 3: Make your first commit"
-echo "📖 Description: 'git commit' permanently saves your staged changes."
+echo " 'git commit' permanently saves your staged changes."
 echo "Each commit is like a snapshot in time, with a message explaining the change."
 echo "Here we make our first commit with message: 'first commit'."
 echo
@@ -101,7 +101,7 @@ echo
 
 # Lesson 4: git branch -M main
 info "Lesson 4: Rename branch to main"
-echo "📖 Description: Branches are like alternate timelines of your code."
+echo " Branches are like alternate timelines of your code."
 echo "By default, Git creates 'master'. Modern convention is to call it 'main'."
 echo "This command renames the current branch to 'main'."
 echo
@@ -123,7 +123,7 @@ echo
 
 # Lesson 5: git remote add origin <URL> (simulated)
 info "Lesson 5: Add remote origin (simulated)"
-echo "📖 Description: A remote is a link to a repository hosted online (like GitHub)."
+echo " A remote is a link to a repository hosted online (like GitHub)."
 echo "By adding 'origin', you connect your local project to the GitHub repo URL."
 echo "This allows you to push and pull changes between your machine and GitHub."
 echo
@@ -142,7 +142,7 @@ echo
 
 # Lesson 6: git push -u origin main (simulated)
 info "Lesson 6: Push to GitHub (simulated)"
-echo "📖 Description: 'git push' uploads your local commits to GitHub."
+echo " 'git push' uploads your local commits to GitHub."
 echo "The '-u origin main' part tells Git to push the 'main' branch to 'origin' (your remote)."
 echo "This is how your code gets shared online for collaboration."
 echo
@@ -161,7 +161,7 @@ echo
 
 # Lesson 7: Merge feature branch into main
 info "Lesson 7: Merge a feature branch into main"
-echo "📖 Description: Branches let you develop features separately."
+echo " Branches let you develop features separately."
 echo "When you're done, you merge the feature branch back into main."
 echo "This integrates the new code while preserving history."
 echo
@@ -191,7 +191,7 @@ echo
 
 # Lesson 8: git clone (simulated)
 info "Lesson 8: Clone a repository (simulated)"
-echo "📖 Description: 'git clone' copies a remote repo from GitHub to your computer."
+echo " 'git clone' copies a remote repo from GitHub to your computer."
 echo "This gives you a local working copy of someone else’s code."
 echo "It’s the command you use most often when starting to work on a new project."
 echo
