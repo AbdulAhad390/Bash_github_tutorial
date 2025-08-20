@@ -87,20 +87,6 @@ echo
 while true; do
     read -p "Run: git commit -m \"first commit\"  " cmd
 
-    # If user pressed ENTER, check repository state
-    if [ -z "$cmd" ]; then
-        commits=$(git rev-list --count HEAD 2>/dev/null || echo 0)
-        if [ "$commits" -ge 1 ]; then
-            success "First commit detected!"
-            break
-        else
-            error "No commit detected yet. Run: git commit -m \"first commit\" then press ENTER."
-            sleep 1
-            continue
-        fi
-    fi
-
-    # Only accept the exact expected command; otherwise prompt again
     if [ "$cmd" = "git commit -m \"first commit\"" ]; then
         eval "$cmd"
     else
