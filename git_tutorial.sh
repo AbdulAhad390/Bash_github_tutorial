@@ -77,6 +77,7 @@ while true; do
     fi
     done
 
+# ...existing code...
 # Lesson 3: git commit -m "first commit"
 info "Lesson 3: Make your first commit"
 echo " 'git commit' permanently saves your staged changes."
@@ -84,10 +85,30 @@ echo "Each commit is like a snapshot in time, with a message explaining the chan
 echo "Here we make our first commit with message: 'first commit'."
 echo
 while true; do
-    read -p "Run: git commit -m \"first commit\" : " cmd
-    if [[ "$cmd" =~ git\ commit\ -m\ \"first\ commit\" ]]; then
-        eval "$cmd"
+    read -p "Run: git commit -m \"first commit\"  " cmd
+
+    # If user pressed ENTER, check repository state
+    if [ -z "$cmd" ]; then
+        commits=$(git rev-list --count HEAD 2>/dev/null || echo 0)
+        if [ "$commits" -ge 1 ]; then
+            success "First commit detected!"
+            break
+        else
+            error "No commit detected yet. Run: git commit -m \"first commit\" then press ENTER."
+            sleep 1
+            continue
+        fi
     fi
+
+    # Only accept the exact expected command; otherwise prompt again
+    if [ "$cmd" = "git commit -m \"first commit\"" ]; then
+        eval "$cmd"
+    else
+        error "Please type exactly: git commit -m \"first commit\" (or press ENTER after running it elsewhere)"
+        sleep 1
+        continue
+    fi
+
     commits=$(git rev-list --count HEAD 2>/dev/null || echo 0)
     if [ "$commits" -ge 1 ]; then
         success "First commit created!"
@@ -204,7 +225,7 @@ while true; do
         echo "   cloned_repo/"
         echo "     ├── README.md"
         echo "     ├── .gitignore"
-        echo "     └── git_tutorial.py"
+        echo "     └── git_tutorial.sh"
         break
     else
         error "Please type: git clone <URL>"
@@ -214,5 +235,5 @@ done
 echo
 
 echo
-echo "${GREEN}🎉 Congratulations! You completed the full GitHub workflow tutorial!${RESET}"
+echo "${GREEN} Congratulations! You completed the full GitHub workflow tutorial!${RESET}"
 echo "Now you know: init, add, commit, branch, remote, push, merge, and clone."
