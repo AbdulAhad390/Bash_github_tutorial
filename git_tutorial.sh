@@ -145,7 +145,7 @@ echo
 while true; do
     read -p "Run: git remote add origin https://github.com/username/repo.git : " cmd
 
-    if [[ "$cmd" == git\ remote\ add\ origin * ]]; then
+    if [[ "$cmd" = "git remote add origin https://github.com/username/repo.git" ]]; then
         success "✅ (Simulated) Remote 'origin' would be added."
         echo "ℹ️  In real life, this links your local repo with GitHub."
         break
