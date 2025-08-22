@@ -155,7 +155,7 @@ while true; do
 done
 echo
 
-Lesson 4: git rm <file>
+# Lesson 4: git rm <file>
 info "Lesson 4: Remove a tracked file"
 echo "'git rm <file>' removes a file from your project and stages its deletion."
 echo "This is how you delete files while keeping Git history updated."
