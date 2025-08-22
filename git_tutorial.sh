@@ -324,7 +324,7 @@ while true; do
         echo "     ├── README.md"
         echo "     ├── .gitignore"
         echo "     └── git_tutorial.sh"
-        continue_or_exit
+        
         break
     else
         error "Please type exactly: git clone https://github.com/username/repo.git"
