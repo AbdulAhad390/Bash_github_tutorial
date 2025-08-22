@@ -262,7 +262,7 @@ while true; do
         echo "📂 Example structure:"
         echo "   cloned_repo/"
         echo "     ├── README.md"
-        echo "     └── main.py"
+        echo "     └── git_tutorial.sh"
         continue_or_exit
         break
     else
@@ -279,7 +279,7 @@ while true; do
     if [ "$cmd" = "git log --oneline --graph --all" ]; then
         eval "$cmd"
         success "Viewed commit history!"
-        continue_or_exit
+        
         break
     else
         error "Please type: git log --oneline --graph --all"
