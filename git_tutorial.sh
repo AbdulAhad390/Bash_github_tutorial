@@ -50,6 +50,22 @@ while true; do
 done
 echo
 
+info " Check repo status (before staging)"
+echo " 'git status' shows the state of your working directory."
+echo "Right after 'git init', files appear as 'untracked'."
+echo
+while true; do
+    read -p "Run: git status : " cmd
+    if [ "$cmd" = "git status" ]; then
+        eval "$cmd"
+        success "You saw the status! Files are untracked at this stage."
+        break
+    else
+        error "Please type: git status"
+        sleep 1
+    fi
+done
+echo
 
 # Lesson 2: git add .
 info "Lesson 2: Stage your files"
@@ -77,6 +93,23 @@ while true; do
     fi
     done
 
+info " Check repo status (after staging)"
+echo " After 'git add .', files are staged for commit."
+echo "Now 'git status' will show them under 'Changes to be committed'."
+echo
+while true; do
+    read -p "Run: git status : " cmd
+    if [ "$cmd" = "git status" ]; then
+        eval "$cmd"
+        success "You saw the status! Files are staged and ready to commit."
+        break
+    else
+        error "Please type: git status"
+        sleep 1
+    fi
+done
+echo
+
 
 # Lesson 3: git commit -m "first commit"
 info "Lesson 3: Make your first commit"
@@ -101,6 +134,22 @@ while true; do
         break
     else
         error "No commit detected yet."
+        sleep 1
+    fi
+done
+echo
+
+info " Check repo status (after commit)"
+echo " After committing, your working directory is clean."
+echo
+while true; do
+    read -p "Run: git status : " cmd
+    if [ "$cmd" = "git status" ]; then
+        eval "$cmd"
+        success "Working tree is clean now."
+        break
+    else
+        error "Please type: git status"
         sleep 1
     fi
 done
