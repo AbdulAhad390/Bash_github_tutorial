@@ -1,4 +1,5 @@
 🚀 Features:
+
 Fully interactive CLI learning tool
 Covers the Git workflow from start to finish
 Validates your input before continuing
@@ -24,6 +25,7 @@ Simulates remote operations like push, pull, and clone (without changing your re
 14) git log --oneline --graph --all → Visualize commit history
 
 🛠 Requirements:
+
 Linux / macOS / WSL on Windows
 Bash shell
 Git installed (git --version)
