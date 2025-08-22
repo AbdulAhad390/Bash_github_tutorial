@@ -204,17 +204,24 @@ while true; do
 done
 echo
 
+
 # Lesson 8: git clone 
-info "Lesson 8: Clone a repository (simulated)"
+info "Lesson 8: Clone a repository "
 echo " 'git clone' copies a remote repo from GitHub to your computer."
 echo "This gives you a local working copy of someone else’s code."
 echo "It’s the command you use most often when starting to work on a new project."
 echo
 while true; do
     read -p "Run: git clone https://github.com/username/repo.git : " cmd
-    if [[ "$cmd" =~ git\ clone ]]; then
-        success "✅ (Simulated) Repository would be cloned into a new folder."
-        echo "ℹ️  In real life, this makes a local copy of a remote repository."
+    # remove potential CR from Windows-edited files
+    cmd=$(echo "$cmd" | tr -d '\r')
+
+    if [ "$cmd" = "git clone https://github.com/username/repo.git" ]; then
+        # run the command (silently) — if you prefer simulation only, remove eval
+        eval "$cmd" >/dev/null 2>&1 || true
+
+        success "✅ Repository cloned (simulated)."
+        echo "ℹ️  In real life, this makes a local copy of the remote repository."
         echo "📂 Example structure of a cloned repo:"
         echo "   cloned_repo/"
         echo "     ├── README.md"
@@ -222,7 +229,7 @@ while true; do
         echo "     └── git_tutorial.sh"
         break
     else
-        error "Please type: git clone <URL>"
+        error "Please type exactly: git clone https://github.com/username/repo.git"
         sleep 1
     fi
 done
