@@ -14,6 +14,18 @@ success() { echo "${GREEN}✅ $1${RESET}"; }
 error()   { echo "${RED}❌ $1${RESET}"; }
 info()    { echo "${BLUE}ℹ $1${RESET}"; }
 
+continue_or_exit() {
+    while true; do
+        read -p "👉 Do you want to continue to the next lesson? (y/n): " choice
+        case "$choice" in
+            y|Y ) echo; break ;;
+            n|N ) echo "👋 Exiting tutorial. See you next time!"; exit 0 ;;
+            * ) echo "Please type y or n." ;;
+        esac
+    done
+}
+
+
 clear
 echo "${YELLOW}============================================${RESET}"
 echo "${YELLOW}   Welcome to GitHub Workflow Tutorial ${RESET}"
@@ -37,6 +49,7 @@ while true; do
         eval "$cmd"
         if [ -d ".git" ]; then
             success "Repository initialized!"
+            continue_or_exit
             break
         else
             error "Failed to initialize repository. Try again."
@@ -86,6 +99,7 @@ while true; do
     staged=$(git diff --cached --name-only)
     if [ -n "$staged" ]; then
         success "Files staged successfully!"
+        continue_or_exit
         break
     else
         error "No files staged yet. Make sure you added files or staged changes."
@@ -131,6 +145,7 @@ while true; do
     commits=$(git rev-list --count HEAD 2>/dev/null || echo 0)
     if [ "$commits" -ge 1 ]; then
         success "First commit created!"
+        continue_or_exit
         break
     else
         error "No commit detected yet."
@@ -169,6 +184,7 @@ while true; do
     if [ "$cmd" = "git rm deleteme.txt" ]; then
         eval "$cmd"
         success "File removed and staged for commit!"
+        continue_or_exit
         break
     else
         error "Please type: git rm deleteme.txt"
@@ -201,6 +217,7 @@ while true; do
     branch=$(git branch --show-current 2>/dev/null | tr -d '\r')
     if [ "$branch" = "main" ]; then
         success "Branch renamed to main!"
+        continue_or_exit
         break
     else
         error "Branch is not 'main' yet."
@@ -221,6 +238,7 @@ while true; do
     if [[ "$cmd" = "git remote add origin https://github.com/username/repo.git" ]]; then
         success "✅  Remote 'origin' would be added."
         echo "ℹ️  In real life, this links your local repo with GitHub."
+        continue_or_exit
         break
     else
         error "Please type: git remote add origin https://github.com/username/repo.git ."
@@ -238,6 +256,7 @@ while true; do
     if [ "$cmd" = "git fetch origin" ]; then
         success "✅  Changes would be fetched from origin."
         echo "ℹ️  In real life, you would see 'remote: Counting objects...' etc."
+        continue_or_exit
         break
     else
         error "Please type: git fetch origin"
@@ -256,6 +275,7 @@ while true; do
     if [ "$cmd" = "git pull origin main" ]; then
         success "✅  Code would be pulled and merged from origin/main."
         echo "ℹ️  In real life, you’d see merge output or 'Already up to date.'"
+        continue_or_exit
         break
     else
         error "Please type: git pull origin main"
@@ -275,6 +295,7 @@ while true; do
     if [ "$cmd" = "git push -u origin main" ]; then
         success "✅  Code would be pushed to GitHub."
         echo "ℹ️  In real life, this uploads commits to your GitHub repo."
+        continue_or_exit
         break
     else
         error "Please type: git push -u origin main"
@@ -303,6 +324,7 @@ while true; do
         echo "     ├── README.md"
         echo "     ├── .gitignore"
         echo "     └── git_tutorial.sh"
+        continue_or_exit
         break
     else
         error "Please type exactly: git clone https://github.com/username/repo.git"
