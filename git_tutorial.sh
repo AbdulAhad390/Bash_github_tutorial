@@ -32,7 +32,7 @@ echo
 while true; do
     read -p "Run: git init : " cmd
 
-   # If user typed the exact command, execute and verify
+   
     if [ "$cmd" = "git init" ]; then
         eval "$cmd"
         if [ -d ".git" ]; then
