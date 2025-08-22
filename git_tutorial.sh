@@ -181,7 +181,7 @@ echo
 
 
 # Lesson 5: git branch -M main
-info "Lesson 4: Rename branch to main"
+info "Lesson 5: Rename branch to main"
 echo " Branches are like alternate timelines of your code."
 echo "By default, Git creates 'master'. Modern convention is to call it 'main'."
 echo "This command renames the current branch to 'main'."
@@ -210,7 +210,7 @@ done
 echo
 
 # Lesson 6: git remote add origin 
-info "Lesson 7: Add remote origin "
+info "Lesson 6: Add remote origin "
 echo " A remote is a link to a repository hosted online (like GitHub)."
 echo "By adding 'origin', you connect your local project to the GitHub repo URL."
 echo "This allows you to push and pull changes between your machine and GitHub."
@@ -330,4 +330,4 @@ echo
 
 echo
 echo "${GREEN} Congratulations! You completed the full GitHub workflow tutorial!${RESET}"
-echo "Now you know: init, add, commit, branch, remote, push, merge, and clone."
+echo "Now you know: init, add, commit, branch, remote, push, pull, fetch, clone."
