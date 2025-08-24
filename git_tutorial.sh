@@ -72,6 +72,7 @@ while true; do
     if [ "$cmd" = "git status" ]; then
         eval "$cmd"
         success "You saw the status! Files are untracked at this stage."
+        continue_or_exit
         break
     else
         error "Please type: git status"
@@ -116,6 +117,7 @@ while true; do
     if [ "$cmd" = "git status" ]; then
         eval "$cmd"
         success "You saw the status! Files are staged and ready to commit."
+        continue_or_exit
         break
     else
         error "Please type: git status"
@@ -162,6 +164,7 @@ while true; do
     if [ "$cmd" = "git status" ]; then
         eval "$cmd"
         success "Working tree is clean now."
+        continue_or_exit
         break
     else
         error "Please type: git status"
@@ -324,6 +327,8 @@ while true; do
         echo "     ├── README.md"
         echo "     ├── .gitignore"
         echo "     └── git_tutorial.sh"
+        continue_or_exit
+
         
         break
     else
